@@ -1,0 +1,13 @@
+/* list-view.component.css */
+tr {
+    height: 50px; /* Adjust the height as per your preference */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Even row color */
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #6e0d0d; /* Odd row color */
+  }
+  

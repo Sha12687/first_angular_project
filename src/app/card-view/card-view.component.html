@@ -1,0 +1,49 @@
+
+  <div class="col-2 border-0">
+      <label for="" class="form-control mt-2 ps-0 border-0 ">Filter :</label>
+      <input type="text" class="mb-2" name="search" [(ngModel)]="searchText" >
+    </div>
+<!-- <div class="row w-25%">
+<div class="card-container">
+  <div class="card" *ngFor="let customer of filteredCustomers">
+    <div class="card-body">
+      <h5 class="card-title">{{ customer.name }}</h5>
+      <p class="card-text">City: {{ customer.city }}</p>
+      <p class="card-text">Country: {{ customer.country }}</p>
+    </div>
+  </div>
+</div>
+</div> -->
+
+<div class="container p-0">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let customer of filteredCustomers.slice(startIndex, endIndex)">
+    <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ customer.name }}</h5>
+          <p class="card-text">City: {{ customer.city }}</p>
+          <p class="card-text">Country: {{ customer.country }}</p>
+          <div class="row d-inline">
+          <p class="d-inline "><a  class="text-decoration-none"  routerLink="/view-order">View orders</a></p>
+          <a class="d-inline text-decoration-none" [routerLink]="['/edit-customer',this]">
+            Edit
+          </a>
+          <a class="text-decoration-none ms-0" [routerLink]="['/edit-customer',this]">
+            Delete
+          </a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+    </ul>
+    </nav>
+</div>
+
+
+

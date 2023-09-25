@@ -1,0 +1,37 @@
+<div class="col-2 border-0 mt-1 ms-2">
+    <label for="" class="form-control mt-2 ms-2 ps-0 border-0 ">Filter :</label>
+    <input type="text" class="ms-2" name="search" [(ngModel)]="searchText" >
+  </div>
+<div class="container mt-1">
+    <table class="table table table-striped">
+      <thead>
+        <tr  class="text-center">
+          <th>Name</th>
+          <th>City</th>
+          <th>Country</th>
+          <th *ngIf="showOrderTotal">Order Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of filteredCustomers.slice(startIndex, endIndex)" class="text-center">
+        <td>{{ customer.name }}</td>
+          <td>{{ customer.city }}</td>
+          <td>{{ customer.country }}</td>
+          <td *ngIf="showOrderTotal">{{ getTotalOrderPrice(customer) }}</td>
+          <td>
+            <!-- Add actions like View Orders button here -->
+            <p class="text-secondary text-decoration-none"><a  class="text-decoration-none pt-2"  routerLink="/view-order">View orders</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+          </li>
+        </ul>
+      </nav>
+  </div>
+  

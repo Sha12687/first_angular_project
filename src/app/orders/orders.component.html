@@ -1,0 +1,25 @@
+
+<div ng-container  class="d-flex align-items-center">
+    <span > <img src="/assets/Images/file2.png" width="50px" height="50px" alt="customer-logo">
+    </span><span class="fs-3 ms-3">Orders</span>
+</div>
+
+<div class="mt-2" *ngFor="let customer of customers">
+    <ng-container *ngIf="customer.orders && customer.orders.length > 0">
+      <h2>{{ customer.name }}</h2>
+      <div>
+        <ul class="">
+          <li class="d-flex justify-content-between ps-4 pe-4" *ngFor="let order of customer.orders">
+          <!-- {{ order.product }} - ${{ order.totalPrice }} -->
+            <span> {{ order.product }}</span>
+            <span>${{ order.totalPrice }}</span>
+            <!-- <span> {{  order.totalPrice }}</span> -->
+          </li>
+          <hr>
+          <p class="text-end ps-4 pe-4"> ${{ getTotalOrderPrice(customer) }}</p>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+  
+  

@@ -1,0 +1,49 @@
+<div class="container col-6 m-auto mt-4 p-4 bg-light">
+    <h3>Add Customer </h3>
+  <form (ngSubmit)="onSubmit(myform.value)" #myform="ngForm">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">First Name</label>
+      <input type="text" class="form-control" name="name" id="name" #name="ngModel" placeholder="Enter user name" required ngModel>
+      <div>
+        <small *ngIf="name.invalid && name.touched"> Name is required field </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Last Name</label>
+      <input type="text" class="form-control" name="lname"  #lname="ngModel" placeholder="Enter user name" required ngModel>
+      <div>
+        <small *ngIf="lname.invalid && lname.touched">Last Name is required field </small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="countrySelect">Country Name</label>
+      <select class="form-control" name="country" id="countrySelect" [(ngModel)]="selectedCountry" required>
+          <option value="" disabled>Select Country</option>
+          <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+      </select>
+      <!-- <div>
+          <small *ngIf="!selectedCountry">Country is required field</small>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="citySelect">City Name</label>
+    <select class="form-control" name="city" id="citySelect" [(ngModel)]="selectedCity" required>
+        <option value="" disabled>Select City</option>
+        <option *ngFor="let city of getCitiesForSelectedCountry()" [value]="city">{{ city }}</option>
+    </select>
+    <!-- <div>
+        <small *ngIf="!selectedCity">City Name is required field</small>
+    </div> -->
+</div>
+<div class="form-group">
+  <label for="exampleFormControlInput1">Address</label>
+  <input type="textarea" class="form-control" name="addname"  #addname="ngModel" placeholder="Enter address"  ngModel>
+</div>
+    <div class="form-group row mt-3 ">
+      <div class="row-4 text-end ">
+      <button class="btn btn-danger mr-2" type="button" (click)="onCancel(myform)">Cancel</button>
+    <button class="btn btn-success ms-2" type="submit" [disabled]="!myform.valid">{{title}}</button>
+  </div>
+  </div>
+  </form>
+  </div>

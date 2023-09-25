@@ -1,0 +1,40 @@
+<div ng-container  class="d-flex align-items-center">
+    <span > <img src="/assets/Images/file2.png" width="50px" height="50px" alt="customer-logo">
+    </span><span class="fs-3 ms-3">Log In</span>
+</div>
+
+<div class="container mt-2">
+    <div class="row ">
+      <div class="col-md-6">
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div class="mt-3 d-inline">
+            <label for="name" class="form-label d-inline">Email </label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.name" required>
+            <div *ngIf="loginForm.controls['name']?.invalid && (loginForm.controls['name']?.touched || submitted)"
+                 class="text-danger">
+              Customer Name is required.
+            </div>
+          </div>
+          <div class="mt-3 mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="formData.password"
+                   required minlength="6" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$">
+            <div *ngIf="loginForm.controls['password']?.hasError('required') && (loginForm.controls['password']?.touched || submitted)"
+                 class="text-danger">
+              Password is required.
+            </div>
+            <div *ngIf="loginForm.controls['password']?.hasError('minlength') && loginForm.controls['password']?.touched"
+                 class="text-danger">
+              Password must be at least 6 characters long.
+            </div>
+            <div *ngIf="loginForm.controls['password']?.hasError('pattern') && loginForm.controls['password']?.touched"
+                 class="text-danger">
+              Password must contain at least one letter, one number, and one special character.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
